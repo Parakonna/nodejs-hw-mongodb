@@ -22,10 +22,11 @@ const contactSchema = new Schema(
       type: String,
       enum: ['work', 'home', 'personal'],
       required: true,
-      default: ['personal'],
+      default: 'personal',
     },
   },
   {
+    versionKey: false,
     timestamps: true,
     createdAt: Date.now,
     updatedAt: Date.now,
