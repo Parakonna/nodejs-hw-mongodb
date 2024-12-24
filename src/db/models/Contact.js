@@ -1,5 +1,11 @@
 import { Schema, model } from 'mongoose';
 
+import { handleSaveError } from './hooks.js';
+
+import { setUpdateSettings } from './hooks.js';
+
+import { typeContact } from '../../constacts/contactType.js';
+
 const contactSchema = new Schema(
   {
     name: {
@@ -20,17 +26,33 @@ const contactSchema = new Schema(
     },
     contactType: {
       type: String,
-      enum: ['work', 'home', 'personal'],
+      enum: typeContact,
       required: true,
-      default: ['personal'],
+      default: 'personal',
     },
   },
   {
+    versionKey: false,
     timestamps: true,
     createdAt: Date.now,
     updatedAt: Date.now,
   },
 );
+
+contactSchema.post('save', handleSaveError);
+
+contactSchema.pre('findOneAndUpdate', setUpdateSettings);
+
+contactSchema.post('findOneAndUpdate', handleSaveError);
+
+export const sortByList = [
+  '_id',
+  'name',
+  'phoneNumber',
+  'email',
+  'isFavourite',
+  'contactType',
+];
 
 const ContactCollection = model('contact', contactSchema);
 export default ContactCollection;
