@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-import { typeContact } from '../constacts/contactType.js';
+import { typeContact } from '../constants/contactType.js';
 
 export const contactAddSchema = Joi.object({
   name: Joi.string().min(3).max(20).required(),
