@@ -4,7 +4,7 @@ import { handleSaveError } from './hooks.js';
 
 import { setUpdateSettings } from './hooks.js';
 
-import { typeContact } from '../../constacts/contactType.js';
+import { typeContact } from '../../constants/contactType.js';
 
 const contactSchema = new Schema(
   {
@@ -28,6 +28,11 @@ const contactSchema = new Schema(
       enum: typeContact,
       required: true,
       default: 'personal',
+    },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+      required: true,
     },
   },
   {
