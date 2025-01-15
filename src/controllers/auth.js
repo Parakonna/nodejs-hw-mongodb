@@ -22,6 +22,16 @@ export const registerController = async (req, res) => {
   });
 };
 
+export const verifyController = async (req, res) => {
+  const { token } = req.query;
+  await authServices.verify(token);
+
+  res.json({
+    status: 200,
+    message: 'Email verified',
+  });
+};
+
 export const loginController = async (req, res) => {
   const session = await authServices.login(req.body);
 
@@ -59,4 +69,24 @@ export const logoutController = async (req, res) => {
   res.clearCookie('sessionId');
 
   res.status(204).send();
+};
+
+export const requestResetEmailController = async (req, res) => {
+  await authServices.requestResetToken(req.body.email);
+
+  res.json({
+    message: 'Reset password email was successfully sent!',
+    status: 200,
+    data: {},
+  });
+};
+
+export const resetPasswordController = async (req, res) => {
+  await authServices.resetPassword(req.body);
+
+  res.json({
+    message: 'Password was successfully reset!',
+    status: 200,
+    data: {},
+  });
 };

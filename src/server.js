@@ -9,17 +9,20 @@ import { getEnvVar } from './utils/getEnvVar.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import authRoutr from './routers/auth.js';
+import { UPLOADS_DIR } from './constants/index.js';
 
 export const setupServer = () => {
   const app = express();
 
   app.use(cors());
   app.use(express.json());
+  app.use(express.static('uploads'));
   app.use(cookieParser());
   // app.use(logger);
 
   app.use('/auth', authRoutr);
   app.use('/contacts', contactsRouter);
+  app.use('/uploads', express.static(UPLOADS_DIR));
 
   app.use(notFoundHandler);
 
