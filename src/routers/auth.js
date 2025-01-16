@@ -20,7 +20,7 @@ authRouter.post(
   ctrlWrapper(authController.registerController),
 );
 
-authRouter.get('/verify', ctrlWrapper(authController.verifyController));
+/* authRouter.get('/verify', ctrlWrapper(authController.verifyController)); */
 
 authRouter.post(
   '/login',
@@ -33,13 +33,13 @@ authRouter.post('/refresh', ctrlWrapper(authController.refreshTokenController));
 authRouter.post('/logout', ctrlWrapper(authController.logoutController));
 
 authRouter.post(
-  '/request-reset-email',
+  '/send-reset-email',
   validateBody(requestResetEmailSchema),
   ctrlWrapper(authController.requestResetEmailController),
 );
 
 authRouter.post(
-  '/reset-password',
+  '/reset-pwd',
   validateBody(resetPasswordSchema),
   ctrlWrapper(authController.resetPasswordController),
 );
