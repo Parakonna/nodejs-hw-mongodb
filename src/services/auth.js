@@ -64,7 +64,7 @@ export const register = async (paylod) => {
   return newUser;
 };
 
-export const verify = async (token) => {
+/* export const verify = async (token) => {
   try {
     const { email } = jwt.verify(token, jwtSecret);
     const user = await UserCollection.findOne({ email });
@@ -75,7 +75,7 @@ export const verify = async (token) => {
   } catch (error) {
     throw createHttpError(401, error.message);
   }
-};
+}; */
 
 export const login = async ({ email, password }) => {
   const user = await UserCollection.findOne({ email });
