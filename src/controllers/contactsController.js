@@ -97,19 +97,19 @@ export const patchContactController = async (req, res) => {
   }
   const { _id: userId } = req.user;
   const { id: _id } = req.params;
-  const result = await contactServices.updateContact(
-    { _id, userId, photo },
-    req.body,
+  const data = await contactServices.updateContact(
+    { _id, userId },
+    { ...req.body, photo },
   );
 
-  if (!result) {
+  if (!data) {
     throw createHttpError(404, 'Contact not found');
   }
 
   res.json({
     status: 200,
     message: 'Successfully insert contact',
-    data: result.data,
+    data,
   });
 };
 
