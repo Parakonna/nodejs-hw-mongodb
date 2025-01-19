@@ -1,0 +1,81 @@
+tags:
+  - Contacts
+summary: Put contact by id
+operationId: putContact
+description: 'Put contact by id'
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: '65ca67e7ae7f10c88b598384'
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - name
+          - phoneNumber
+          - contactType
+        properties:
+          name:
+            description: "Contact's name"
+            type: string
+            example: 'John Doe'
+          phoneNumber:
+            description: "Contact's phone"
+            type: number
+            example: 123123123
+          email:
+            description: "Contact's email"
+            type: string
+            example: test@mail.com
+          isFavourite:
+            description: 'Is contact favourit'
+            type: boolean
+            example: true
+          contactType:
+            description: "Contactt's type"
+            type: string
+            enum: ['work', 'home', 'personal']
+          userId:
+            description: "User's id"
+            type: string
+            example: 65e4decdd286b30065d54af9
+          photo:
+            description: "Contact's photo"
+            type: string
+            format: binary
+responses:
+  '201':
+    description: Successfully upsert contact!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully upsert contact with id 65ca67e7ae7f10c88b598384!!
+            data:
+              type: object
+              $ref: ../../../components/shemas/contact.yaml
+  '400':
+    $ref: ../../../components/responses/400.yaml
+  '401':
+    $ref: '../../../components/responses/401.yaml'
+  '404':
+    $ref: '../../../components/responses/404.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'

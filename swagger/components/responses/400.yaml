@@ -1,0 +1,24 @@
+description: Unauthorized error
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - status
+        - message
+        - data
+      properties:
+        status:
+          type: integer
+          example: 400
+        message:
+          type: string
+          example: Validate body
+        data:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              example: ' "\"name\" is required. \"phoneNumber\" is required. \"contactType\" is required"'

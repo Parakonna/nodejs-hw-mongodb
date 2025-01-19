@@ -27,7 +27,7 @@ export const getContactsController = async (req, res) => {
   });
   res.json({
     status: 200,
-    message: 'Successfully found movies',
+    message: 'Successfully found contacts!',
     data,
   });
 };
@@ -69,11 +69,11 @@ export const addContactController = async (req, res) => {
 };
 
 export const upsertContactController = async (req, res) => {
-  const { id } = req.params;
+  const { id: _id } = req.params;
   const { _id: userId } = req.user;
   const { isNew, data } = await contactServices.updateContact(
-    id,
-    { ...req.body, userId },
+    { _id, userId },
+    { ...req.body },
     {
       upsert: true,
     },
@@ -81,7 +81,7 @@ export const upsertContactController = async (req, res) => {
   const status = isNew ? 201 : 200;
   res.status(status).json({
     status,
-    message: 'Successfully upsert contact',
+    message: 'Successfully upsert contact!',
     data,
   });
 };
