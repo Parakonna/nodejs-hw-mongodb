@@ -67,7 +67,7 @@ responses:
               example: 201
             message:
               type: string
-              example: Successfully upsert contact with id 65ca67e7ae7f10c88b598384!!
+              example: Successfully upsert contact!
             data:
               type: object
               $ref: ../../../components/shemas/contact.yaml

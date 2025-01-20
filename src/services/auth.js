@@ -64,27 +64,10 @@ export const register = async (paylod) => {
   return newUser;
 };
 
-/* export const verify = async (token) => {
-  try {
-    const { email } = jwt.verify(token, jwtSecret);
-    const user = await UserCollection.findOne({ email });
-    if (!user) {
-      throw createHttpError(401, 'User not found');
-    }
-    await UserCollection.findOneAndUpdate({ _id: user._id }, { verify: true });
-  } catch (error) {
-    throw createHttpError(401, error.message);
-  }
-}; */
-
 export const login = async ({ email, password }) => {
   const user = await UserCollection.findOne({ email });
   if (!user) {
     throw createHttpError(401, 'Email or password invalid');
-  }
-
-  if (!user.verify) {
-    throw createHttpError(401, 'Email nod verif');
   }
 
   const passordCoapere = await bcrypt.compare(password, user.password);
