@@ -1,0 +1,33 @@
+type: object
+required:
+  - _id
+  - name
+  - email
+  - verify
+  - createdAt
+  - updatedAt
+properties:
+  _id:
+    description: "User's id"
+    type: string
+    example: 65e4decdd286b30065d54af9
+  name:
+    description: "User's name"
+    type: string
+    example: 'John Doe'
+  email:
+    description: "User's email"
+    type: string
+    example: test@mail.com
+  verify:
+    description: 'User verified'
+    type: boolean
+    example: true
+  createdAt:
+    description: 'It is time to make an appointment'
+    type: integer
+    example: 2025-01-17T15:13:48.448Z
+  updatedAt:
+    description: 'Time to update the entry'
+    type: integer
+    example: 2025-01-17T15:16:25.103Z

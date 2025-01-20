@@ -47,8 +47,8 @@ requestBody:
             type: string
             format: binary
 responses:
-  '201':
-    description: Successfully upsert contact!
+  '200':
+    description: Successfully insert contact!
     content:
       application/json:
         schema:
@@ -60,10 +60,10 @@ responses:
           properties:
             status:
               type: integer
-              example: 201
+              example: 200
             message:
               type: string
-              example: Successfully upsert contact with id 65ca67e7ae7f10c88b598384!!
+              example: Successfully insert contact!
             data:
               type: object
               $ref: ../../../components/shemas/contact.yaml

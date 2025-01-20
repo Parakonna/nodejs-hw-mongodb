@@ -1,0 +1,49 @@
+tags:
+  - Auth
+summary: Refresh session
+operationId: refreshSession
+description: "Refresh the user's access token"
+security: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - _id
+        properties:
+          _id:
+            description: "User's id"
+            type: string
+            example: '678e7d99514a6efd743e9a49'
+responses:
+  '200':
+    description: Successfully refreshed a session!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully refreshed a session!
+            data:
+              type: object
+              required:
+                - accessToken
+              properties:
+                accessToken:
+                  description: 'access token'
+                  type: string
+                  example: l/F8YeppuCLDvHxriuQynNFFSAU1kMuV7we6Dhhq
+  '404':
+    $ref: '../../components/responses/404.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'

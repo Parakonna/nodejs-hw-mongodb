@@ -35,11 +35,11 @@ properties:
     type: string
     example: 65e4decdd286b30065d54af9
   createdAt:
-    description: 'Contact'
+    description: 'It is time to make an appointment'
     type: integer
     example: 2025-01-17T15:13:48.448Z
   updatedAt:
-    description: 'Contact'
+    description: 'Time to update the entry'
     type: integer
     example: 2025-01-17T15:16:25.103Z
   photo:
