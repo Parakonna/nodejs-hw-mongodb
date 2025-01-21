@@ -13,7 +13,7 @@ tags:
     description: Auth operations.
 servers:
   - url: http://localhost:3000
-  - url: https://my-contacts.com/api/v1
+  - url: https://My-contacts.com/api/v1
 paths:
   /contacts:
     get:
